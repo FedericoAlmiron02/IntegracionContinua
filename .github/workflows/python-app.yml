@@ -1,10 +1,11 @@
-name: Python application
+name: Prueba hello
 
 on:
   push:
     branches: main
   pull_request:
-    branches: main 
+    branches: main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -27,3 +28,20 @@ jobs:
     - name: Run hello.py
       run: |
         python hello.py
+
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
+     
