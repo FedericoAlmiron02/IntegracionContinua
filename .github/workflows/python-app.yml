@@ -34,6 +34,16 @@ jobs:
       run: |
         python hello.py
 
+    - name: Slack notification
+      uses: act10ns/slack@v2
+      with:
+        channel: 'notif'
+        status: ${{ job.status }}
+      if: always()
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL}}
+    
+
   sonarcloud:
     runs-on: ubuntu-latest
 
