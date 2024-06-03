@@ -71,4 +71,13 @@ jobs:
         service-id: ${{ secrets.SERVICE_ID }}
         api-key: ${{ secrets.RENDER_API_KEY }}
 
+    - name: Slack notification for deploy
+      uses: act10ns/slack@v2
+      with:
+        channel: 'notif'
+        status: ${{ job.status }}
+      if: always()
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
         #Agregar accion de deploy, desactivar deploy automatico / Notificacion cuando se se hace el deploy
