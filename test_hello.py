@@ -7,4 +7,6 @@ def test_suma():
     assert suma(0, 0) == 0
     assert suma(1.5, 2.5) == 4.0
     assert suma(-1.5, -2.5) == -4.0
+    assert suma(1.23456789, 9.87654321) == 11.1111111
+
 
