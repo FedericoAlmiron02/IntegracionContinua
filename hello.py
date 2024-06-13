@@ -1,4 +1,4 @@
-def suma(a, b): #suma
+def suma(a, b): #funcion suma 
     return a + b
 
 if __name__ == "__main__":
